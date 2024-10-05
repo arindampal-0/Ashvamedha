@@ -1,3 +1,4 @@
+import AboutUs from "../components/AboutUs";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import "./Home.css";
@@ -7,6 +8,7 @@ function Home() {
         <div className="Home">
             <Navbar />
             <Hero />
+            <AboutUs />
         </div>
     )
 }
