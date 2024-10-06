@@ -50,28 +50,29 @@ function CounterUpComp() {
             <ScrollTrigger
                 onEnter={() => setCounterOn(true)}
                 onExit={() => setCounterOn(false)}
-            >
-                <div className="counterUpRow">
-                    {countersProperties.map(function (counterProp, index) {
-                        return (
-                            <div className="counterUp" key={index}>
-                                <h1>
-                                    {counterOn && (
-                                        <CountUp
-                                            start={counterProp.start}
-                                            end={counterProp.end}
-                                            duration={counterProp.duration}
-                                            delay={0}
-                                        />
-                                    )}
-                                    {counterProp.addPlus && "+"}
-                                </h1>
-                                <p>{counterProp.title}</p>
-                            </div>
-                        );
-                    })}
-                </div>
-            </ScrollTrigger>
+                component={
+                    <div className="counterUpRow">
+                        {countersProperties.map(function (counterProp, index) {
+                            return (
+                                <div className="counterUp" key={index}>
+                                    <h1>
+                                        {counterOn && (
+                                            <CountUp
+                                                start={counterProp.start}
+                                                end={counterProp.end}
+                                                duration={counterProp.duration}
+                                                delay={0}
+                                            />
+                                        )}
+                                        {counterProp.addPlus && "+"}
+                                    </h1>
+                                    <p>{counterProp.title}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                }
+            />
         </>
     );
 }
