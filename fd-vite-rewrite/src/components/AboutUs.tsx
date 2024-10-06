@@ -2,9 +2,24 @@ import "./AboutUs.css";
 
 import CounterUpComp from "./CounterUpComp";
 
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+
 function AboutUs() {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const location = useLocation();
+    useEffect(function() {
+        if (location.hash === "#aboutus") {
+            if (ref.current) {
+                ref.current.scrollIntoView({ behavior: "smooth" });
+            } else {
+                console.error("ref not set");
+            }
+        }
+    }, [location]);
+
     return (
-        <div className="AboutUs">
+        <div ref={ref} className="AboutUs">
             <div className="content">
                 <div className="title">
                     <h1>
