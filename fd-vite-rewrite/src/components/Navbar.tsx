@@ -42,7 +42,7 @@ function Navbar() {
         },
         {
             title: "Contact Us",
-            path: "/#contactus",
+            path: "#contactus",
             className: "nav-text",
         },
     ];
