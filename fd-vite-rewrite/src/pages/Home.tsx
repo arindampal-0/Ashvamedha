@@ -1,7 +1,9 @@
-import AboutUs from "../components/AboutUs";
-import Hero from "../components/Hero";
-import Navbar from "../components/Navbar";
 import "./Home.css";
+
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import AboutUs from "../components/AboutUs";
+import Footer from "../components/Footer";
 
 function Home() {
     return (
@@ -9,6 +11,7 @@ function Home() {
             <Navbar />
             <Hero />
             <AboutUs />
+            <Footer />
         </div>
     );
 }
