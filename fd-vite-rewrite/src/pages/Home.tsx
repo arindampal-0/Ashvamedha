@@ -10,7 +10,7 @@ function Home() {
             <Hero />
             <AboutUs />
         </div>
-    )
+    );
 }
 
 export default Home;

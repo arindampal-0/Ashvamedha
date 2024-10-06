@@ -1,7 +1,5 @@
 import "./Navbar.css";
 
-import ashvamedhaLogo from "../assets/demoPhotos/ashvamedhaLogo.png";
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoClose, IoMenu } from "react-icons/io5";
@@ -52,7 +50,7 @@ function Navbar() {
     return (
         <nav className="main-nav">
             <Link to="/" className="logo">
-                <img src={ashvamedhaLogo} alt="ASHVAMEDHA" />
+                <img src="/images/logos/ashvamedha-logo.png" alt="ASHVAMEDHA" />
             </Link>
             <div
                 className={
