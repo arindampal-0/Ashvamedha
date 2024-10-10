@@ -9,5 +9,17 @@
     "trailingComma": "es5",
     "bracketSpacing": true,
     "bracketSameLine": false,
-    "arrowParens": "always"
+    "arrowParens": "always",
+    "importOrder": [
+        "(.*).css$",
+        "(.*).png$",
+        "<THIRD_PARTY_MODULES>",
+        "^@pages/(.*)$",
+        "^@components/(.*)$",
+        "^@data/(.*)$",
+        "^[.*]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }
