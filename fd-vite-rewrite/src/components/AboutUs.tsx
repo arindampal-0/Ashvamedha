@@ -1,22 +1,30 @@
 import "./AboutUs.css";
 
-import CounterUpComp from "./CounterUpComp";
+import ashvamedhaLogo from "@images/logos/ashvamedha-logo.png";
+import iitbbsLogo from "@images/logos/iitbbs-logo.png";
+import sportsCouncilLogo from "@images/logos/iitbbs-sports-council-logo.png";
+import mechandiseImage from "@images/merchandise.png";
 
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
+import CounterUpComp from "./CounterUpComp";
+
 function AboutUs() {
     const ref = useRef<HTMLDivElement | null>(null);
     const location = useLocation();
-    useEffect(function() {
-        if (location.hash === "#aboutus") {
-            if (ref.current) {
-                ref.current.scrollIntoView({ behavior: "smooth" });
-            } else {
-                console.error("ref not set");
+    useEffect(
+        function () {
+            if (location.hash === "#aboutus") {
+                if (ref.current) {
+                    ref.current.scrollIntoView({ behavior: "smooth" });
+                } else {
+                    console.error("ref not set");
+                }
             }
-        }
-    }, [location]);
+        },
+        [location]
+    );
 
     return (
         <div ref={ref} className="AboutUs">
@@ -29,19 +37,18 @@ function AboutUs() {
                 </div>
                 <div className="main-body">
                     <div className="logos">
-                        {/* TODO: Add static logos later */}
                         <img
-                            src="/images/logos/iitbbs-sports-council-logo.png"
+                            src={sportsCouncilLogo}
                             alt="Sports Council Logo"
                             className="logo"
                         />
                         <img
-                            src="/images/logos/iitbbs-logo.png"
+                            src={iitbbsLogo}
                             alt="IITBBS Logo"
                             className="logo"
                         />
                         <img
-                            src="/images/logos/ashvamedha-logo.png"
+                            src={ashvamedhaLogo}
                             alt="Ashvamedha Logo"
                             className="logo"
                         />
@@ -80,7 +87,7 @@ function AboutUs() {
             </div>
             <div className="ath">
                 {/* TODO: add merchandise logo */}
-                <img src="/images/merchandise.png" alt="tshirt" />
+                <img src={mechandiseImage} alt="tshirt" />
             </div>
         </div>
     );

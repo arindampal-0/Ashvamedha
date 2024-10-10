@@ -5,7 +5,7 @@
 
         .content-hero {
             height: 100vh;
-            background-image: url("/images/bg6_2.jpg");
+            background-image: url("../assets/images/bg6_2.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;

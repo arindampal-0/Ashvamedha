@@ -1,8 +1,10 @@
 import "./Navbar.css";
 
+import ashvamedhaLogo from "@images/logos/ashvamedha-logo.png";
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { IoClose, IoMenu } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 type MenuData = Array<{ title: string; path: string; className: string }>;
 
@@ -50,7 +52,7 @@ function Navbar() {
     return (
         <nav className="main-nav">
             <Link to="/" className="logo">
-                <img src="/images/logos/ashvamedha-logo.png" alt="ASHVAMEDHA" />
+                <img src={ashvamedhaLogo} alt="ASHVAMEDHA" />
             </Link>
             <div
                 className={
@@ -75,7 +77,14 @@ function Navbar() {
             <div className="social-media">
                 {/* Hamburger menu start */}
                 <div className="hamburger-menu">
-                    <div onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                    <div
+                        onClick={() =>
+                            setShowMobileMenu(
+                                (prevShowMobileMenuState) =>
+                                    !prevShowMobileMenuState
+                            )
+                        }
+                    >
                         {showMobileMenu ? (
                             <IoClose className="icon" />
                         ) : (
