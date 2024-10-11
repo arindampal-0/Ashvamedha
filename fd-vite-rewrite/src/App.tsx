@@ -1,7 +1,11 @@
-// import { SyncLoader } from "react-spinners";
+import "./index.css";
 
+// import { SyncLoader } from "react-spinners";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+
+import Events from "@pages/Events";
+import Home from "@pages/Home";
+import SingleSport from "@pages/SingleSport";
 
 function App() {
     return (
@@ -11,6 +15,8 @@ function App() {
             </div> */}
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/events" element={<Events />} />
+                <Route path="/events/:sportsId" element={<SingleSport />} />
             </Routes>
         </>
     );

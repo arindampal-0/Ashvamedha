@@ -107,7 +107,8 @@ const sportsInfos: Array<SportsInfo> = [
         imgUrl: tabletennisEventImage,
         demoImgUrl: tabletennisDemoImage,
         desc: "The sound of ball hitting the table is the sound of opportunity, don't miss the shot.",
-        longDesc: "Requires lightning-quick reflexes and precision. Ashvamedha's table tennis tournament is a showcase of spin serves, rallies, and impressive volleys. Come and experience the thrill of ping pong. Information regarding the event is given below.",
+        longDesc:
+            "Requires lightning-quick reflexes and precision. Ashvamedha's table tennis tournament is a showcase of spin serves, rallies, and impressive volleys. Come and experience the thrill of ping pong. Information regarding the event is given below.",
         date: "4th-5th November",
         location: "Inside SAC Multi-Purpose Hall",
         registrationLink:

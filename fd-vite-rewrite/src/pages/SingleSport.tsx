@@ -95,7 +95,10 @@ function SingleSport() {
                             </p>
                         </div>
                         <div className="sports-img">
-                            <img src={sportsInfo.demoImgUrl} alt={`${sportsInfo.name} image`} />
+                            <img
+                                src={sportsInfo.demoImgUrl}
+                                alt={`${sportsInfo.name} image`}
+                            />
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,11 @@
 import "./Footer.css";
 
 import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import { AiOutlineInstagram, AiOutlineMail } from "react-icons/ai";
 import { BiCopyright, BiSolidPhoneCall } from "react-icons/bi";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
+import { useLocation } from "react-router-dom";
 
 type SocialMediaHandle = {
     icon: JSX.Element;
@@ -16,15 +16,18 @@ type SocialMediaHandle = {
 function Footer() {
     const ref = useRef<HTMLDivElement | null>(null);
     const location = useLocation();
-    useEffect(function() {
-        if (location.hash === "#contactus") {
-            if (ref.current) {
-                ref.current.scrollIntoView({ behavior: "smooth" });
-            } else {
-                console.error("ref not set");
+    useEffect(
+        function () {
+            if (location.hash === "#contactus") {
+                if (ref.current) {
+                    ref.current.scrollIntoView({ behavior: "smooth" });
+                } else {
+                    console.error("ref not set");
+                }
             }
-        }
-    }, [location]);
+        },
+        [location]
+    );
 
     const socialMediaHandles: Array<SocialMediaHandle> = [
         {

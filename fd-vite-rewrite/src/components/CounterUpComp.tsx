@@ -1,8 +1,8 @@
 import "./CounterUpComp.css";
 
-import ScrollTrigger from "react-scroll-trigger";
-import CountUp from "react-countup";
 import { useState } from "react";
+import CountUp from "react-countup";
+import ScrollTrigger from "react-scroll-trigger";
 
 type CounterProperty = {
     title: string;
@@ -47,6 +47,7 @@ function CounterUpComp() {
 
     return (
         <>
+            {/* TODO: remove ScrollTrigger react-scroll deps */}
             <ScrollTrigger
                 onEnter={() => setCounterOn(true)}
                 onExit={() => setCounterOn(false)}

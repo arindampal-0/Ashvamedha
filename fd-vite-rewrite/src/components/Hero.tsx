@@ -1,20 +1,23 @@
 import "./Hero.css";
 
-import {useRef, useEffect} from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function Hero() {
     const ref = useRef<HTMLDivElement | null>(null);
     const location = useLocation();
-    useEffect(function() {
-        if (location.hash === "") {
-            if (ref.current) {
-                ref.current.scrollIntoView({ behavior: "smooth" });
-            } else {
-                console.error("ref not set");
+    useEffect(
+        function () {
+            if (location.hash === "") {
+                if (ref.current) {
+                    ref.current.scrollIntoView({ behavior: "smooth" });
+                } else {
+                    console.error("ref not set");
+                }
             }
-        }
-    }, [location]);
+        },
+        [location]
+    );
 
     return (
         <div ref={ref} className="hero">
