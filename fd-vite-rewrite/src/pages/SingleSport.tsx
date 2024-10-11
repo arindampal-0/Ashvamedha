@@ -20,7 +20,7 @@ function SingleSport() {
     useEffect(
         function () {
             if (sportsId) {
-                console.log(parseInt(sportsId));
+                // console.log(parseInt(sportsId));
                 const sportsInfo = sportsInfos.find(
                     (value) => value.id === Number(sportsId)
                 );
@@ -58,8 +58,8 @@ function SingleSport() {
                         </Link>
                         {isPopUpOpen && (
                             <UpcomingMatch
-                                trigger={true}
-                                sportsId={sportsInfo.id}
+                                closePopup={() => setIsPopUpOpen(false)}
+                                fixtureImgName={sportsInfo.fixtureImgName}
                             />
                         )}
                     </div>

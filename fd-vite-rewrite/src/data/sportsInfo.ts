@@ -16,6 +16,7 @@ export type SportsInfo = {
     name: string;
     imgUrl: string;
     demoImgUrl: string;
+    fixtureImgName: string;
     desc: string;
     longDesc: string;
     date: string;
@@ -31,6 +32,7 @@ const sportsInfos: Array<SportsInfo> = [
         name: "Chess",
         imgUrl: chessEventImage,
         demoImgUrl: chessDemoImage,
+        fixtureImgName: "chessp",
         desc: "Chess is the art of thinking ahead, of making complex decisions under pressure.",
         longDesc:
             "Chess, the game of intellect and strategy, challenges players to outthink their opponents, anticipate moves, and plan ahead. At the Ashvamedha Chess Championship we celebrate this timeless battle of wits. Whether you're a seasoned player or just starting, join us for two days of intense competition and camaraderie. Information regarding the event is given below.",
@@ -46,6 +48,7 @@ const sportsInfos: Array<SportsInfo> = [
         name: "Badminton",
         imgUrl: badmintonEventImage,
         demoImgUrl: badmintonDemoImage,
+        fixtureImgName: "badmintonp",
         desc: "Badminton is not only about winning, it's about playing beautiful and memorable games.",
         longDesc:
             "Badminton is a sport that demands speed, agility, and fitness. Whether you're smashing shuttlecocks or diving for a crucial save, the Ashvamedha Badminton Championship promises intense rallies and thrilling matches. Join us on the court for a birdie-tastic showdown. Information regarding the event is given below.",
@@ -61,6 +64,7 @@ const sportsInfos: Array<SportsInfo> = [
         name: "Volleyball",
         imgUrl: volleyballEventImage,
         demoImgUrl: volleyballDemoImage,
+        fixtureImgName: "volleyballp",
         desc: "Success in volleyball comes not from individual glory but from seamless teamwork.",
         longDesc:
             "Volleyball is a dynamic team sport that demands coordination, agility, and teamwork. Whether you're spiking, blocking, or diving for a save, it's all about the thrill of the game. Join us for a spirited match at Ashvamedha Sports Arena. Information regarding the event is given below.",
@@ -76,6 +80,7 @@ const sportsInfos: Array<SportsInfo> = [
         name: "Football",
         imgUrl: footballEventImage,
         demoImgUrl: footballDemoImage,
+        fixtureImgName: "footballp",
         desc: "Success is no accident, it is hard work, perseverance, learning, studying, sacrifice, and most of all, love of what you are doing and learning to do.",
         longDesc:
             "Football, the world's most beloved sport, unites people through the joy of scoring goals and making breathtaking saves. At Ashvamedha, we bring the footbal community together for a thrilling tournament filling with skill, passion, and unforgettable moments. Information regarding the event is given below.",
@@ -91,6 +96,7 @@ const sportsInfos: Array<SportsInfo> = [
         name: "Basketball",
         imgUrl: basketballEventImage,
         demoImgUrl: basketballDemoImage,
+        fixtureImgName: "basketballp",
         desc: "Basketball is like photography, if you don't focus, all you have is the negative.",
         longDesc:
             "Basketball is a fast-paced, high-flying game of strategy and skill. Dribble, pass, and shoot your way to victory in the Ashvamedha Basketball Championship. Join us on the court for slam dunks and three-pointers that will leave you in awe. Information regarding the event is given below.",
@@ -106,6 +112,7 @@ const sportsInfos: Array<SportsInfo> = [
         name: "Table Tennis",
         imgUrl: tabletennisEventImage,
         demoImgUrl: tabletennisDemoImage,
+        fixtureImgName: "ttp",
         desc: "The sound of ball hitting the table is the sound of opportunity, don't miss the shot.",
         longDesc:
             "Requires lightning-quick reflexes and precision. Ashvamedha's table tennis tournament is a showcase of spin serves, rallies, and impressive volleys. Come and experience the thrill of ping pong. Information regarding the event is given below.",
