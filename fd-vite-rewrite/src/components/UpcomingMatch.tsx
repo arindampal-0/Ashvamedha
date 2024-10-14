@@ -8,35 +8,55 @@ type Props = {
     fixtureImgName: string;
 };
 
+enum Status {
+    Loading = 0,
+    Loaded,
+    Failed
+};
+
 function UpcomingMatch(props: Props) {
     const [fixtureImageUrl, setFixtureImageUrl] = useState<string | null>(null);
+    const [status, setStatus] = useState<Status>(Status.Loading);
 
     useEffect(
         function () {
             async function getFixtureImage() {
-                const response = await fetch(
-                    "https://ashvamedha.onrender.com/upload/name",
-                    {
-                        method: "POST",
-                        body: JSON.stringify({
-                            folderName: "4th-nov-fixtures",
-                            name: props.fixtureImgName,
-                        }),
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    }
-                );
+                setStatus(Status.Loading);
+                try {
+                    const response = await fetch(
+                        "https://ashvamedha.onrender.com/upload/name",
+                        {
+                            method: "POST",
+                            body: JSON.stringify({
+                                folderName: "4th-nov-fixtures",
+                                name: props.fixtureImgName,
+                            }),
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        }
+                    );
 
-                if (response.status === 200) {
-                    const data = await response.json();
-                    // console.log(data);
+                    if (response.status === 200) {
+                        const data = await response.json();
+                        // console.log(data);
 
-                    const imageUrl = data.result[0].image.url;
-                    if (imageUrl) {
-                        console.log(imageUrl);
-                        setFixtureImageUrl(imageUrl);
+                        const imageUrl = data.result[0].image.url;
+                        if (imageUrl) {
+                            console.log(imageUrl);
+                            setFixtureImageUrl(imageUrl);
+                            setStatus(Status.Loaded);
+                        } else {
+                            console.error("imageUrl is null");
+                            setStatus(Status.Failed);
+                        }
+                    } else {
+                        console.error("response.status !== 200");
+                        setStatus(Status.Failed);
                     }
+                } catch (err) {
+                    console.error("error", err);
+                    setStatus(Status.Failed);
                 }
             }
 
@@ -58,15 +78,17 @@ function UpcomingMatch(props: Props) {
                 <button className="close-btn" onClick={props.closePopup}>
                     <VscClose className="close" />
                 </button>
-                {fixtureImageUrl ? (
+                {status === Status.Loaded && fixtureImageUrl && (
                     <img
                         src={fixtureImageUrl}
                         alt="fixture image"
                         className="images"
                     />
-                ) : (
+                )} 
+                {status === Status.Loading && (
                     <span style={{ color: "white" }}>Loading...</span>
                 )}
+                { status === Status.Failed && (<span style={{color: "red"}}>Failed to load Upcoming matches!</span>)}
             </div>
         </div>
     );
