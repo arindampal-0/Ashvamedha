@@ -9,6 +9,7 @@ import SingleSport from "@pages/SingleSport";
 import LiveScore from "@pages/LiveScore";
 import OurTeam from "@pages/OurTeam";
 import Gallery from "@pages/Gallery";
+import Leaderboard from "@pages/Leaderboard";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/livescore/:sportname" element={<LiveScore />} />
                 <Route path="/team" element={<OurTeam />} />
                 <Route path="/gallery" element={<Gallery />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
             </Routes>
         </>
     );
