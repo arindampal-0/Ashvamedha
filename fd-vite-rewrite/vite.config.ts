@@ -11,9 +11,10 @@ export default defineConfig({
             "@components": path.resolve(__dirname, "./src/components"),
             "@data": path.resolve(__dirname, "./src/data"),
             "@images": path.resolve(__dirname, "./src/assets/images"),
+            "@env": path.resolve(__dirname, "./src/env"),
         },
     },
     server: {
-        // port: 3000,
+        port: 3000,
     },
 });

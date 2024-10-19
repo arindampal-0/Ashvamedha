@@ -6,7 +6,6 @@ function ScrollToTop() {
     const location = useLocation();
     useEffect(
         function () {
-            console.log(location);
             if (location.hash === "") {
                 if (ref.current) {
                     ref.current.scrollIntoView({ behavior: "smooth" });

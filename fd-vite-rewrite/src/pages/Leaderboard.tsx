@@ -1,5 +1,7 @@
 import "./Leaderboard.css";
 
+import env from "@env";
+
 import { useEffect, useState } from "react";
 import { z } from "zod";
 
@@ -32,37 +34,39 @@ function Leaderboard() {
     );
     const [collegeScores, setCollegeScores] = useState<Array<CollegeScore>>([]);
 
-    async function fetchScore() {
-        setLoadingScoreState(LoadingState.Loading);
-
-        const promises = collegesInfo.map(function (college) {
-            return fetch("https://ashvamedha.onrender.com/college/score", {
-                method: "POST",
-                body: JSON.stringify({ collegeName: college.name }),
-                headers: { "Content-Type": "application/json" },
-            });
-        });
-        const responses = await Promise.all(promises);
-        // const array = responses.map(async function (response) {
-        //     const data = await response.json();
-        //     return data.result;
-        // });
-        responses.forEach(async function (response) {
-            const data = await response.json();
-            const parsedData = responseDataSchema.safeParse(data);
-            if (parsedData.success) {
-                setCollegeScores((prev) => [
-                    ...prev,
-                    {
-                        name: parsedData.data.result[1],
-                        score: parsedData.data.result[0],
-                    },
-                ]);
-            }
-        });
-    }
-
     useEffect(function () {
+        async function fetchScore() {
+            setLoadingScoreState(LoadingState.Loading);
+
+            const url = new URL("college/score", env.VITE_SERVER_BASE_URL);
+
+            const promises = collegesInfo.map(function (college) {
+                return fetch(url.href, {
+                    method: "POST",
+                    body: JSON.stringify({ collegeName: college.name }),
+                    headers: { "Content-Type": "application/json" },
+                });
+            });
+            const responses = await Promise.all(promises);
+            // const array = responses.map(async function (response) {
+            //     const data = await response.json();
+            //     return data.result;
+            // });
+            responses.forEach(async function (response) {
+                const data = await response.json();
+                const parsedData = responseDataSchema.safeParse(data);
+                if (parsedData.success) {
+                    setCollegeScores((prev) => [
+                        ...prev,
+                        {
+                            name: parsedData.data.result[1],
+                            score: parsedData.data.result[0],
+                        },
+                    ]);
+                }
+            });
+        }
+
         fetchScore()
             .then(() => setLoadingScoreState(LoadingState.Loaded))
             .catch(() => setLoadingScoreState(LoadingState.Failed));

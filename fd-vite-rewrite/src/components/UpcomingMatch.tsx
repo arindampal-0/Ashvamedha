@@ -1,5 +1,7 @@
 import "./UpcomingMatch.css";
 
+import env from "@env";
+
 import { useEffect, useState } from "react";
 import { VscClose } from "react-icons/vsc";
 
@@ -18,24 +20,23 @@ function UpcomingMatch(props: Props) {
     const [fixtureImageUrl, setFixtureImageUrl] = useState<string | null>(null);
     const [status, setStatus] = useState<Status>(Status.Loading);
 
+    const url = new URL("upload/name", env.VITE_SERVER_BASE_URL);
+
     useEffect(
         function () {
             async function getFixtureImage() {
                 setStatus(Status.Loading);
                 try {
-                    const response = await fetch(
-                        "https://ashvamedha.onrender.com/upload/name",
-                        {
-                            method: "POST",
-                            body: JSON.stringify({
-                                folderName: "4th-nov-fixtures",
-                                name: props.fixtureImgName,
-                            }),
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                        }
-                    );
+                    const response = await fetch(url.href, {
+                        method: "POST",
+                        body: JSON.stringify({
+                            folderName: "4th-nov-fixtures",
+                            name: props.fixtureImgName,
+                        }),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    });
 
                     if (response.status === 200) {
                         const data = await response.json();

@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./CollegePointsDetail.css";
 
+import env from "@env";
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { z } from "zod";
@@ -42,14 +44,13 @@ function CollegePointsDetail() {
             async function fetchCollegePointsDetail() {
                 setLoadingScoreState(LoadingState.Loading);
 
-                const response = await fetch(
-                    "https://ashvamedha.onrender.com/college",
-                    {
-                        method: "POST",
-                        body: JSON.stringify({ collegeName: collegeName }),
-                        headers: { "Content-Type": "application/json" },
-                    }
-                );
+                const url = new URL("college", env.VITE_SERVER_BASE_URL);
+
+                const response = await fetch(url.href, {
+                    method: "POST",
+                    body: JSON.stringify({ collegeName: collegeName }),
+                    headers: { "Content-Type": "application/json" },
+                });
 
                 const data = await response.json();
                 const parsedData = responseDataSchema.safeParse(data);

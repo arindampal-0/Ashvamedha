@@ -12,6 +12,7 @@
     "arrowParens": "always",
     "importOrder": [
         "(.*).css$",
+        "^@env$",
         "^@images/(.*)$",
         "<THIRD_PARTY_MODULES>",
         "^@pages/(.*)$",

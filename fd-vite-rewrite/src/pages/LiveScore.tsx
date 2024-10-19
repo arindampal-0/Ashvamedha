@@ -1,5 +1,7 @@
 import "./LiveScore.css";
 
+import env from "@env";
+
 import livePhoto from "@images/demoPhotos/live.png";
 
 import { useEffect, useState } from "react";
@@ -40,17 +42,18 @@ function LiveScore() {
         function () {
             async function fetchLiveScore() {
                 setStatus(Status.Loading);
+                const url = new URL(
+                    "sport/getlivescore",
+                    env.VITE_SERVER_BASE_URL
+                );
                 try {
-                    const response = await fetch(
-                        "https://ashvamedha.onrender.com/sport/getlivescore",
-                        {
-                            method: "POST",
-                            body: JSON.stringify({
-                                sportname: sportname?.toLowerCase(),
-                            }),
-                            headers: { "Content-Type": "application/json" },
-                        }
-                    );
+                    const response = await fetch(url.href, {
+                        method: "POST",
+                        body: JSON.stringify({
+                            sportname: sportname?.toLowerCase(),
+                        }),
+                        headers: { "Content-Type": "application/json" },
+                    });
 
                     const data = await response.json();
 
