@@ -12,12 +12,17 @@ import LiveScore from "@pages/LiveScore";
 import OurTeam from "@pages/OurTeam";
 import SingleSport from "@pages/SingleSport";
 
+import ScrollToTop from "@components/ScrollToTop";
+
 function App() {
     return (
         <>
             {/* <div style={{position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%"}}>
                 <SyncLoader color="#030027" loading={true} margin={5} size={15} speedMultiplier={1} cssOverride={{display: "block", margin: "0 auto", borderColor: "red"}} />
             </div> */}
+
+            {/* Updated to react-router-dom v6.4, use data createBrowserRouter */}
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/events" element={<Events />} />

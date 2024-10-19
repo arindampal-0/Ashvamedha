@@ -11,8 +11,8 @@ type Props = {
 enum Status {
     Loading = 0,
     Loaded,
-    Failed
-};
+    Failed,
+}
 
 function UpcomingMatch(props: Props) {
     const [fixtureImageUrl, setFixtureImageUrl] = useState<string | null>(null);
@@ -84,11 +84,15 @@ function UpcomingMatch(props: Props) {
                         alt="fixture image"
                         className="images"
                     />
-                )} 
+                )}
                 {status === Status.Loading && (
                     <span style={{ color: "white" }}>Loading...</span>
                 )}
-                { status === Status.Failed && (<span style={{color: "red"}}>Failed to load Upcoming matches!</span>)}
+                {status === Status.Failed && (
+                    <span style={{ color: "red" }}>
+                        Failed to load Upcoming matches!
+                    </span>
+                )}
             </div>
         </div>
     );
