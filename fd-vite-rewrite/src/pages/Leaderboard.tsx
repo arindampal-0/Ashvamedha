@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { z } from "zod";
 
 import CollegeScore from "@components/CollegeScore";
+import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
 
 import collegesInfo from "@data/collegesInfo";
-import Footer from "@components/Footer";
 
-enum State {
+enum LoadingState {
     Loading = 0,
     Loaded,
     Failed,
@@ -27,13 +27,13 @@ const responseDataSchema = z.object({
 });
 
 function Leaderboard() {
-    const [loadingScoreState, setLoadingScoreState] = useState<State>(
-        State.Loading
+    const [loadingScoreState, setLoadingScoreState] = useState<LoadingState>(
+        LoadingState.Loading
     );
     const [collegeScores, setCollegeScores] = useState<Array<CollegeScore>>([]);
 
     async function fetchScore() {
-        setLoadingScoreState(State.Loading);
+        setLoadingScoreState(LoadingState.Loading);
 
         const promises = collegesInfo.map(function (college) {
             return fetch("https://ashvamedha.onrender.com/college/score", {
@@ -64,8 +64,10 @@ function Leaderboard() {
 
     useEffect(function () {
         fetchScore()
-            .then(() => setLoadingScoreState(State.Loaded))
-            .catch(() => setLoadingScoreState(State.Failed));
+            .then(() => setLoadingScoreState(LoadingState.Loaded))
+            .catch(() => setLoadingScoreState(LoadingState.Failed));
+
+        return () => setCollegeScores([]);
     }, []);
 
     return (
@@ -79,15 +81,15 @@ function Leaderboard() {
                     </h2>
                 </div>
                 <div className="content">
-                    {loadingScoreState === State.Loading && (
+                    {loadingScoreState === LoadingState.Loading && (
                         <span style={{ color: "white" }}>Loading...</span>
                     )}
-                    {loadingScoreState === State.Failed && (
+                    {loadingScoreState === LoadingState.Failed && (
                         <span style={{ color: "red" }}>
                             Failed loading college scores
                         </span>
                     )}
-                    {loadingScoreState === State.Loaded &&
+                    {loadingScoreState === LoadingState.Loaded &&
                         collegeScores
                             .sort((c1, c2) => c2.score - c1.score)
                             .map(function (collegeInfo, index) {
@@ -95,7 +97,7 @@ function Leaderboard() {
                                     <CollegeScore
                                         collegeInfo={collegeInfo}
                                         index={index + 1}
-                                        key={collegeInfo.name}
+                                        key={index}
                                     />
                                 );
                             })}

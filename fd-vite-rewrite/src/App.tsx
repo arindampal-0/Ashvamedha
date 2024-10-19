@@ -3,13 +3,14 @@ import "./index.css";
 // import { SyncLoader } from "react-spinners";
 import { Route, Routes } from "react-router-dom";
 
+import CollegePointsDetail from "@pages/CollegePointsDetail";
 import Events from "@pages/Events";
+import Gallery from "@pages/Gallery";
 import Home from "@pages/Home";
-import SingleSport from "@pages/SingleSport";
+import Leaderboard from "@pages/Leaderboard";
 import LiveScore from "@pages/LiveScore";
 import OurTeam from "@pages/OurTeam";
-import Gallery from "@pages/Gallery";
-import Leaderboard from "@pages/Leaderboard";
+import SingleSport from "@pages/SingleSport";
 
 function App() {
     return (
@@ -25,6 +26,10 @@ function App() {
                 <Route path="/team" element={<OurTeam />} />
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route
+                    path="/leaderboard/:collegename"
+                    element={<CollegePointsDetail />}
+                />
             </Routes>
         </>
     );
