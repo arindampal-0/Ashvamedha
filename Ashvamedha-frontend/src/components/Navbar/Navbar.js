@@ -1,14 +1,14 @@
 import "./Navbar.scss";
 
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaYoutubeSquare,
-} from "react-icons/fa/index.esm.js";
+// import {
+//   FaFacebookSquare,
+//   FaInstagramSquare,
+//   FaYoutubeSquare,
+// } from "react-icons/fa/index.esm.js";
 import { IoClose, IoMenu } from "react-icons/io5";
 import React, { useState } from "react";
 
-import { GiHamburgerMenu } from "react-icons/gi/index.esm.js";
+// import { GiHamburgerMenu } from "react-icons/gi/index.esm.js";
 import { Link } from "react-scroll";
 import { Link as ActualLink } from "react-router-dom";
 import ashvamedhaLogo from "../../assests/demoPhotos/ashvamedhaLogo.png";
@@ -67,7 +67,7 @@ function Navbar() {
   const navigate = useNavigate();
   return (
     <nav className="main-nav">
-      <div className="logo" onClick={() => navigate("/")}>
+      <div className="logo" onClick={()=>{window.scrollTo(0,0);navigate("/")}}>
         <img src={ashvamedhaLogo} alt="ASHVAMEDHA" />
       </div>
       <div
@@ -78,8 +78,9 @@ function Navbar() {
             return item.navigate ? (
               <li key={index} className={item.cName}>
                 <Link
-                  to="#"
+                  to="/"
                   onClick={() => {
+                    window.scrollTo(0,0);
                     navigate(`${item.path}`);
                   }}
                 >
@@ -99,12 +100,12 @@ function Navbar() {
             );
           })}
           <li key="25" className="nav-text rulebook">
-                <ActualLink target="_blank" to="https://drive.google.com/file/d/1uYx_bUUJfOQ2pumA8WBRG5euHmx8q9xl/view?usp=sharing" >
+                <ActualLink target="_blank" to="https://drive.google.com/file/d/1q8wArG5pp0X8n_0Oql9BiVH1CTC_lQAn/view?usp=sharing" >
                     <span>Brochure</span>
                 </ActualLink>
           </li>
-          <li key="25" className="nav-text rulebook">
-                <ActualLink target="_blank" to="https://drive.google.com/file/d/1SXuWSfnb3d_5q0j0apuFsaaL-_xDAngD/view?usp=sharing" >
+          <li key="26" className="nav-text rulebook">
+                <ActualLink target="_blank" to="https://drive.google.com/file/d/1InFTI3Zu8qfCHNtCNvprIHpEpjz94Xjg/view?usp=sharing" >
                     <span>Rulebook</span>
                 </ActualLink>
           </li>
@@ -115,13 +116,13 @@ function Navbar() {
       <div className="social-media">
         {/* hamburger menu start  */}
         <div className="hamburger-menu">
-          <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+          <Link href="/" onClick={() => {setShowMediaIcons(!showMediaIcons)}}>
             {showMediaIcons ? (
               <IoClose className="icon" />
             ) : (
               <IoMenu className="icon" />
             )}
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
